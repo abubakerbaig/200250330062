@@ -15,22 +15,13 @@ unsigned char buff[1024];
 pthread_t temp_analysis, rotation_analysis, monitor;
 
 void *Temp_Aanlysis(void *data) {
+	while(1)	{
 
+	}
 }
 void *Rotation_Analysis(void *data) {
-
-}
-void *Monitor(void *data)   {
-    
-}
-
-int main(int argc, char const *argv[])
-{
-    pthread_create(&temp_analysis, NULL, Temp_Analysis, NULL);
-    pthread_create(&rotation_Analysis, NULL, Rotation_Analysis, NULL);
-    pthread_create(&monitor, NULL, Monitor, NULL);
-
-	cfd = socket(AF_INET,SOCK_STREAM,0);
+	while(1)	{
+		cfd = socket(AF_INET,SOCK_STREAM,0);
 
 	saddr.sin_family = AF_INET;
 	saddr.sin_addr.s_addr = inet_addr("127.0.0.1");
@@ -48,11 +39,30 @@ int main(int argc, char const *argv[])
 	if(cfd == -1)
 		printf("error while accept\n");
 
-	write(cfd,"hello client\n",13);
+	while(1)	{
 	read(cfd,buff,1024);
-
+	if(buff[2]>16)	{
+		
+	}
 	printf("client send:%s\n",buff);
-	
+	} 
+
 	close(cfd);
 	close(sfd);
+	}
+
+}
+void *Monitor(void *data)   {
+	
+	
+    
+}
+
+int main(int argc, char const *argv[])
+{
+    pthread_create(&temp_analysis, NULL, Temp_Analysis, NULL);
+    pthread_create(&rotation_Analysis, NULL, Rotation_Analysis, NULL);
+    pthread_create(&monitor, NULL, Monitor, NULL);
+
+	return 0;
 }
