@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <linux/in.h>
 #include <time.h>
+#include <semaphore.h>
+#include <fcntl.h>
 #include "unique_id.h"
 
 #define MIN_VALUE 2
@@ -57,19 +59,30 @@ int main(int argc, char const *argv[])  {
 
   //  printf("timestamp:%ld\ndata-%d\n", acc_struct.time, acc_struct.data);//check
 
+//sem init
+
+    sem_t *sem_rocket = sem_open(SEM_NAMW1, 1);
+    if(sem_rocket == SEM_FAILED)    {
+        perror("Temp_control_system/sem_open(creating)");
+        exit(EXIT_FAILURE);
+    }
+
 	cfd = socket(AF_INET, SOCK_STREAM,0);
 
-    if(cfd == -1)   {
+    if(cfd < 0)   {
         perror("socket open/Acceleration_Rocket");
         return -1;  
     }
 
 	saddr.sin_family = AF_INET;
-	saddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	saddr.sin_port = htons(6601);
-
-	sfd = connect(cfd,(struct sockaddr *)&saddr,sizeof(struct sockaddr_in)); //session create...
-    if(sfd == -1)   {
+	saddr.sin_port = htons(6666);
+    sfd = inet_pton(AF_INET, "127.0.0.1", &saddr.sin_addr); //convert ipv4 and ipv6 from text to binary form
+    if(sfd < 0) {
+        perror("inet_pton() open/Acceleration_Rocket");
+        return -1; 
+    }
+	sfd = connect(cfd,(struct sockaddr *)&saddr,sizeof(saddr)); //session create...
+    if(sfd < 0)   {
         perror("Connect() open/Acceleration_Rocket");
         return -1;  
     }
@@ -81,7 +94,9 @@ int main(int argc, char const *argv[])  {
         buffer[2] = acc_struct.data;
         buffer[3] = acc_struct.time;
 
+        sem_wait(sem_rocket);
         write(cfd,&buffer,sizeof(buffer));
+        sem_post(sem_rocket);        
         acc_struct.packet_num++;
         sleep(1);
     }

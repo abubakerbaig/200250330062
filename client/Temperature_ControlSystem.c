@@ -6,11 +6,12 @@
 #include <unistd.h>
 #include <linux/in.h>
 #include <time.h>
+#include <semaphore.h>
+#include <fcntl.h>
 #include "unique_id.h"
 
 #define MIN_VALUE 30
 #define MAX_VALUE 300
-
 int random_gen(int ,int );
 
 
@@ -49,7 +50,7 @@ int random_gen(int min_num, int max_num)    {
 }
 
 int main(int argc, char const *argv[])  {
-    //def init 
+    // init 
     time_t second;
     temp_cs_struct.time = time(&second);
     temp_cs_struct.Prgm_ID = TEMP_CS; //1 for Acceleration
@@ -57,8 +58,16 @@ int main(int argc, char const *argv[])  {
     temp_cs_struct.data = 0;
 
     
-  //  printf("timestamp:%ld\ndata-%d\n", temp_cs_struct.time, temp_cs_struct.data);//check
+    //printf("timestamp:%ld\ndata-%d\n", temp_cs_struct.time, temp_cs_struct.data);//check
+    //sem init
+    sem_unlink(SEM_NAMW1);
+    sem_t *sem_rocket = sem_open(SEM_NAMW1, O_CREAT, 0600, 1);
+    if(sem_rocket == SEM_FAILED)    {
+        perror("Temp_control_system/sem_open(creating)");
+        exit(EXIT_FAILURE);
+    }
 
+    //socket init
 	cfd = socket(AF_INET, SOCK_STREAM,0);
 
     if(cfd == -1)   {
@@ -75,6 +84,10 @@ int main(int argc, char const *argv[])  {
         perror("Connect() open/temp_cs_Rocket");
         return -1;  
     }
+
+    //signaling semaphore init (assuming this is the first process that will run)
+    
+
     while(1)    {
         temp_cs_struct.data = random_gen(MIN_VALUE, MAX_VALUE);
        
@@ -82,8 +95,9 @@ int main(int argc, char const *argv[])  {
         buffer[1] = temp_cs_struct.packet_num;
         buffer[2] = temp_cs_struct.data;
         buffer[3] = temp_cs_struct.time;
-
+        sem_wait(sem_rocket);
         write(cfd,&buffer,sizeof(buffer));
+        sem_post(sem_rocket);
         temp_cs_struct.packet_num++;
         sleep(1);
     }

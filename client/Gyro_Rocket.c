@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <linux/in.h>
 #include <time.h>
+#include <semaphore.h>
+#include <fcntl.h>
 #include "unique_id.h"
 
 
@@ -57,7 +59,15 @@ int main(int argc, char const *argv[])  {
     gyro_struct.packet_num = 1;
     gyro_struct.data = 0;
 
-  //  printf("timestamp:%ld\ndata-%d\n", gyro_struct.time, gyro_struct.data);//check
+//  printf("timestamp:%ld\ndata-%d\n", gyro_struct.time, gyro_struct.data);//check
+
+//sem init
+
+    sem_t *sem_rocket = sem_open(SEM_NAMW1, 1);
+    if(sem_rocket == SEM_FAILED)    {
+        perror("Temp_control_system/sem_open(creating)");
+        exit(EXIT_FAILURE);
+    }
 
 	cfd = socket(AF_INET, SOCK_STREAM,0);
 
@@ -71,10 +81,12 @@ int main(int argc, char const *argv[])  {
 	saddr.sin_port = htons(6602);
 
 	sfd = connect(cfd,(struct sockaddr *)&saddr,sizeof(struct sockaddr_in)); //session create...
+
     if(sfd == -1)   {
         perror("Connect() open/Gyro_Rocket");
         return -1;  
     }
+
     while(1)    {
 
         gyro_struct.data = random_gen(MIN_VALUE, MAX_VALUE);
@@ -83,11 +95,11 @@ int main(int argc, char const *argv[])  {
         buffer[1] = gyro_struct.packet_num;
         buffer[2] = gyro_struct.data;
         buffer[3] = gyro_struct.time;
-
+        sem_wait(sem_rocket);
         write(cfd,&buffer,sizeof(buffer));
+        sem_post(sem_rocket);
         gyro_struct.packet_num++;
         sleep(1);
-
     }
 
 	close(cfd);

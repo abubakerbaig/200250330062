@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <linux/in.h>
 #include <time.h>
+#include <semaphore.h>
+#include <fcntl.h>
 #include "unique_id.h"
 
 #define MIN_VALUE -100
@@ -59,6 +61,14 @@ int main(int argc, char const *argv[])  {
 
     //printf("timestamp:%ld\ndata-%d\n", temp_th_struct.time, temp_th_struct.data);//check
 
+//sem init
+
+    sem_t *sem_rocket = sem_open(SEM_NAMW1, 1);
+    if(sem_rocket == SEM_FAILED)    {
+        perror("Temp_control_system/sem_open(creating)");
+        exit(EXIT_FAILURE);
+    }
+
 	cfd = socket(AF_INET, SOCK_STREAM,0);
 
     if(cfd == -1)   {
@@ -84,8 +94,9 @@ int main(int argc, char const *argv[])  {
         buffer[1] = temp_th_struct.packet_num;
         buffer[2] = temp_th_struct.data;
         buffer[3] = temp_th_struct.time;
-
+        sem_wait(sem_rocket);
         write(cfd,&buffer,sizeof(buffer));
+        sem_post(sem_rocket);
         temp_th_struct.packet_num++;
         sleep(1);
     }
