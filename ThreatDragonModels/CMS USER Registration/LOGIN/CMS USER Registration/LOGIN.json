@@ -1,0 +1,26 @@
+{
+  "version": "2.4.1",
+  "summary": {
+    "title": "CMS USER Registration/LOGIN",
+    "owner": "Mirza Abubaker Baig",
+    "description": "TARA for User Registration and Login for CMS\nThe Course Management System (CMS) is intended to provide information about available courses.\nCMS majorly consists of two modules:\n1. Registration - for registering users\n2. Login - For authenticating users",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "New STRIDE diagram",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.4.1",
+        "cells": []
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 0
+  }
+}
