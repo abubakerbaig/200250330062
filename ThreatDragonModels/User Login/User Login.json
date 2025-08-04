@@ -134,7 +134,7 @@
               "threats": [
                 {
                   "id": "b3342de9-c2f8-4575-ba51-ccb60f3570b8",
-                  "title": "Spoofing",
+                  "title": "Attacker Impersonates user",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Spoofing",
@@ -147,12 +147,12 @@
                 },
                 {
                   "id": "12419303-b969-4de2-b66e-9aa76fdf379e",
-                  "title": "repudiation",
+                  "title": "Denial of access",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Repudiation",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "User may deny having performed certain actions (e.g., course access or registration)",
+                  "description": "User may deny having performed certain actions (e.g., course access or registration)",
+                  "mitigation": " Enable secure activity logging with non-repudiation",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 2,
@@ -160,8 +160,8 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "repudiation": 1
+                "spoofing": 3,
+                "repudiation": 2
               }
             }
           },
@@ -285,12 +285,12 @@
               "threats": [
                 {
                   "id": "28845245-6e83-4263-9ffc-ca1102f234f2",
-                  "title": "Spoofing ",
+                  "title": "Weak or stolen credentials",
                   "status": "Open",
                   "severity": "Critical",
                   "type": "Spoofing",
                   "description": "Weak Authentication allows identity forgery",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Use strong password policies + MFA",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 4,
@@ -298,12 +298,12 @@
                 },
                 {
                   "id": "fa005295-9285-4a5a-af49-74a73b507dda",
-                  "title": "Tampering ",
+                  "title": "intercept/modify Credentials",
                   "status": "Open",
                   "severity": "High",
                   "type": "Tampering",
                   "description": "Credentials could be intercepted or altered in transit",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Use TLS encryption and input validation",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 5,
@@ -311,12 +311,12 @@
                 },
                 {
                   "id": "de8ef629-1960-453a-8e70-4307e9feb039",
-                  "title": "Information Disclosure",
+                  "title": "Credentials visible",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Information disclosure",
                   "description": "If not encrypted, user credentials might be exposed.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Mask sensitive fields; avoid verbose error messages",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 6,
@@ -324,12 +324,12 @@
                 },
                 {
                   "id": "cf039b93-34da-41bb-8e4d-ced502793710",
-                  "title": "denial of service",
+                  "title": "Brute-force attack",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Denial of service",
                   "description": "Brute-Force attacks may overload the authentication system",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": " Implement rate limiting and account lockout mechanisms",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 7,
@@ -337,11 +337,11 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 1,
+                "spoofing": 3,
+                "tampering": 3,
                 "repudiation": 0,
-                "informationDisclosure": 1,
-                "denialOfService": 1,
+                "informationDisclosure": 3,
+                "denialOfService": 4,
                 "elevationOfPrivilege": 0
               }
             }
@@ -466,12 +466,12 @@
               "threats": [
                 {
                   "id": "693348df-3ff8-4bda-af42-5339bde6b520",
-                  "title": "Tampering",
+                  "title": "Access rights altered",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Critical",
                   "type": "Tampering",
                   "description": " Course permissions can be altered to grant unauthorized access.\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Validate user access on server-side",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 19,
@@ -479,12 +479,12 @@
                 },
                 {
                   "id": "85e94103-3204-457f-9f0d-a687cf326186",
-                  "title": "Information Disclosure",
+                  "title": "unauthorized course data access",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Information disclosure",
                   "description": "\nUsers might access content not meant for them.\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Implement granular access control",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 20,
@@ -492,12 +492,12 @@
                 },
                 {
                   "id": "413b8f8b-c3f7-418f-8ec7-9e20562362c5",
-                  "title": " Denial of Service",
+                  "title": "Mass request to load content",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Denial of service",
                   "description": "Repeated course load requests can impact availability.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Use caching, load balancing, and monitoring",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 21,
@@ -506,10 +506,10 @@
               ],
               "threatFrequency": {
                 "spoofing": 1,
-                "tampering": 1,
+                "tampering": 3,
                 "repudiation": 0,
-                "informationDisclosure": 1,
-                "denialOfService": 1,
+                "informationDisclosure": 3,
+                "denialOfService": 3,
                 "elevationOfPrivilege": 0
               }
             }
@@ -634,12 +634,12 @@
               "threats": [
                 {
                   "id": "9a7e83d5-3d1b-4f95-96c5-3e69feb84c01",
-                  "title": "Spoofing",
+                  "title": "Fake account registration",
                   "status": "Open",
                   "severity": "High",
                   "type": "Spoofing",
                   "description": "Fake users may register using forged data",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Use CAPTCHA and email/OTP verification",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 8,
@@ -647,12 +647,12 @@
                 },
                 {
                   "id": "fc01fae9-dbdb-463d-afd9-dabebb0628be",
-                  "title": "Information Disclosure",
+                  "title": "Registration Data Leaked",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Information disclosure",
                   "description": "Sensitive registration data might be leaked.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Encrypt data in transit and at rest",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 9,
@@ -660,12 +660,12 @@
                 },
                 {
                   "id": "b46ae26f-f838-4291-bca5-47854fd8a6ce",
-                  "title": "Tampering",
+                  "title": "modify roles or data",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Tampering",
                   "description": "Data could be modified to alter user roles (e.g., become admin)",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Server-side validation and access control",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 10,
@@ -673,12 +673,12 @@
                 },
                 {
                   "id": "0ccb9457-afa7-4ee7-adb5-9c070e28a61b",
-                  "title": "Repudiation",
+                  "title": "No audit trail",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Repudiation",
                   "description": "No logging might allow denial of registration actions",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": " Log registration with timestamps and IPs",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 11,
@@ -686,10 +686,10 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 2,
-                "tampering": 1,
-                "repudiation": 1,
-                "informationDisclosure": 1,
+                "spoofing": 4,
+                "tampering": 3,
+                "repudiation": 3,
+                "informationDisclosure": 4,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
@@ -815,12 +815,12 @@
               "threats": [
                 {
                   "id": "a091f626-e08a-4b23-bcf9-6d00bfb95e2e",
-                  "title": "tampering",
+                  "title": "Manipulate Server data",
                   "status": "Open",
                   "severity": "High",
                   "type": "Tampering",
                   "description": "Malicious actors might modify data being transmitted or processed.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Apply input sanitization and output encoding",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 12,
@@ -828,12 +828,12 @@
                 },
                 {
                   "id": "bbd9670d-87a4-444c-87cd-120897a1acf2",
-                  "title": "Repudiation:",
+                  "title": "No tracebility",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Repudiation",
                   "description": " Lack of logging makes it hard to trace user or server actions.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Enable request and transaction logging",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 13,
@@ -841,12 +841,12 @@
                 },
                 {
                   "id": "935f71a0-8989-4b38-b58e-b3b78707b9ed",
-                  "title": "Denial of Service",
+                  "title": "Request overload",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Denial of service",
                   "description": "High load of course/data access requests could crash the server.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Apply rate limiting and monitoring",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 14,
@@ -854,12 +854,12 @@
                 },
                 {
                   "id": "33887fdc-5a63-40fb-8130-cbfc038d402b",
-                  "title": "Elevation of Privilege",
+                  "title": "Misuse of permissions",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Elevation of privilege",
                   "description": "Flaws in logic may allow a user to escalate their privileges.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Enforce Role-Based Access Control (RBAC)",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 18,
@@ -868,11 +868,11 @@
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 2,
-                "repudiation": 1,
+                "tampering": 4,
+                "repudiation": 3,
                 "informationDisclosure": 1,
-                "denialOfService": 2,
-                "elevationOfPrivilege": 1
+                "denialOfService": 4,
+                "elevationOfPrivilege": 3
               }
             }
           },
@@ -996,12 +996,12 @@
               "threats": [
                 {
                   "id": "a76bafd6-adcf-458d-8b9d-dc1b23748dc2",
-                  "title": "Tampering",
+                  "title": "Reuse or manipulate OTPs",
                   "status": "Open",
                   "severity": "High",
                   "type": "Tampering",
                   "description": "OTP values could be intercepted or reused.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Use time-based OTP (TOTP) with short expiry",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 15,
@@ -1009,12 +1009,12 @@
                 },
                 {
                   "id": "e5a1a2eb-e895-4c16-8d5f-df484ac00f0a",
-                  "title": "Information Disclosure",
+                  "title": "OTP visible in logs or network",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Information disclosure",
                   "description": "Unencrypted transmission may expose OTPs.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "OTP visible in logs or network",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 16,
@@ -1022,12 +1022,12 @@
                 },
                 {
                   "id": "f69c36e4-138f-44f4-80b4-3c0b8b1aa545",
-                  "title": "Denial of Service",
+                  "title": "spamming OTP requests",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Denial of service",
                   "description": "OTP service might be overwhelmed by repeated requests.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Rate limit and throttle OTP endpoints",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 17,
@@ -1035,12 +1035,12 @@
                 },
                 {
                   "id": "c79c8e7e-8a9b-4c41-ad2d-8f2f8d89ba41",
-                  "title": "Spoofing",
+                  "title": "Fake OTP generation",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Spoofing",
                   "description": "Malicious clients might try to generate OTPs fraudulently.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": " Link OTPs to session/user context",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 22,
@@ -1048,11 +1048,11 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 2,
+                "spoofing": 4,
+                "tampering": 5,
                 "repudiation": 0,
-                "informationDisclosure": 2,
-                "denialOfService": 1,
+                "informationDisclosure": 4,
+                "denialOfService": 3,
                 "elevationOfPrivilege": 0
               }
             }
@@ -1177,12 +1177,12 @@
               "threats": [
                 {
                   "id": "a6ab19ab-8907-4b2d-9df8-330f4aa69308",
-                  "title": "Tampering",
+                  "title": "Malicious inputs affecting logic",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Tampering",
                   "description": " Input manipulation could compromise business logic.\n\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Implement input validation and error handling",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 23,
@@ -1190,12 +1190,12 @@
                 },
                 {
                   "id": "69a55c3a-f41c-4e33-a177-d9be5256b8a9",
-                  "title": "Information Disclosure",
+                  "title": "Leaks of internal logic or data",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Information disclosure",
                   "description": "Sensitive data might be exposed to unauthorized users.\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Remove stack traces and sensitive debug info",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 24,
@@ -1203,12 +1203,12 @@
                 },
                 {
                   "id": "cd940a9c-0715-4eb7-a696-0938c4a948ba",
-                  "title": "Denial of Service",
+                  "title": "Resource Exhaustion",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Denial of service",
                   "description": "\nOverloading the service with API calls could cause disruption.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Use async processing, rate limiting, health checks",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 25,
@@ -1217,10 +1217,10 @@
               ],
               "threatFrequency": {
                 "spoofing": 1,
-                "tampering": 2,
+                "tampering": 5,
                 "repudiation": 1,
-                "informationDisclosure": 1,
-                "denialOfService": 1,
+                "informationDisclosure": 4,
+                "denialOfService": 3,
                 "elevationOfPrivilege": 0
               }
             }
@@ -1351,12 +1351,12 @@
               "threats": [
                 {
                   "id": "fc67e49e-27b6-41cf-9a7d-b1c210f37169",
-                  "title": "Tampering",
+                  "title": "Direct changes to course/user data",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Tampering",
                   "description": "Attackers could alter stored course/user data.\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": " Enable integrity checks, hashing, and logging",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 26,
@@ -1364,12 +1364,12 @@
                 },
                 {
                   "id": "7149d607-e74e-40f1-aebd-2c7edc24c360",
-                  "title": "Information Disclosure",
+                  "title": "unauthorized data access",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Information disclosure",
                   "description": "\n Poor access controls might expose data.\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Encrypt at rest and enforce strict access policies\n\n",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 27,
@@ -1377,12 +1377,12 @@
                 },
                 {
                   "id": "eeef9e2d-075f-4e87-a2ff-ddd5c0c371b7",
-                  "title": " Denial of Service",
+                  "title": "query flooding",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Denial of service",
                   "description": "Excessive queries might lock or crash the database.\n\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": " Use query optimization, throttling, and failover\n\n",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 28,
@@ -1390,12 +1390,12 @@
                 },
                 {
                   "id": "3948aca4-8084-4b01-858f-6918409334b3",
-                  "title": "Elevation of Privilege",
+                  "title": "Unauthorized Write Access",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Tampering",
                   "description": "\n If misconfigured, users might gain write access.\n",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "Enforce least privilege, role segregation",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 29,
@@ -1403,10 +1403,10 @@
                 }
               ],
               "threatFrequency": {
-                "tampering": 2,
+                "tampering": 7,
                 "repudiation": 0,
-                "informationDisclosure": 1,
-                "denialOfService": 1
+                "informationDisclosure": 3,
+                "denialOfService": 3
               }
             },
             "tools": {
