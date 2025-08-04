@@ -3,7 +3,7 @@
   "summary": {
     "title": "User Login",
     "owner": "Mirza Abubaker Baig",
-    "description": "TARA for User Login for CMS\nThe Course Management System (CMS) is intended to provide information about available courses.\nCMS majorly consists of two modules:\n1. Registration - for registering users\n2. Login - For authenticating users",
+    "description": "TARA for User Registration and Login for CMS\nThe Course Management System (CMS) is intended to provide information about available courses.\nCMS majorly consists of two modules:\n1. Registration - for registering users\n2. Login - For authenticating users",
     "id": 0
   },
   "detail": {
