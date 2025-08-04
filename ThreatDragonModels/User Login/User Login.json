@@ -130,7 +130,7 @@
               "outOfScope": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": true,
-              "providesAuthentication": false,
+              "providesAuthentication": true,
               "threats": [
                 {
                   "id": "b3342de9-c2f8-4575-ba51-ccb60f3570b8",
@@ -1408,13 +1408,6 @@
                 "informationDisclosure": 3,
                 "denialOfService": 3
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
