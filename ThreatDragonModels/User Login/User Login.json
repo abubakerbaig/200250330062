@@ -38,6 +38,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -121,7 +122,6 @@
               ]
             },
             "id": "860b2e8d-1b40-4a53-a8d5-16574036179d",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "Legitimate User",
@@ -193,6 +193,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -276,7 +277,6 @@
               ]
             },
             "id": "7f2e2644-29a9-429b-926d-f2fd49e59e60",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Authentication",
@@ -374,6 +374,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -457,7 +458,6 @@
               ]
             },
             "id": "edbbd42f-6f66-405e-8262-5a93a58d0b9b",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
               "name": "Course Access",
@@ -542,6 +542,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -625,7 +626,6 @@
               ]
             },
             "id": "3812f2e4-4a2c-43ac-aeb3-9e5d86f00d19",
-            "zIndex": 4,
             "data": {
               "type": "tm.Process",
               "name": "Registration",
@@ -723,6 +723,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -806,7 +807,6 @@
               ]
             },
             "id": "1a4ffa12-d74e-44f5-b90a-f8a2cd325ae3",
-            "zIndex": 5,
             "data": {
               "type": "tm.Process",
               "name": "Node Server\n (process)",
@@ -904,6 +904,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 6,
             "ports": {
               "groups": {
                 "top": {
@@ -987,7 +988,6 @@
               ]
             },
             "id": "21411974-fbcc-4888-aaa5-6b2a11ff104f",
-            "zIndex": 6,
             "data": {
               "type": "tm.Process",
               "name": "OTP Generator",
@@ -1085,6 +1085,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 7,
             "ports": {
               "groups": {
                 "top": {
@@ -1168,7 +1169,6 @@
               ]
             },
             "id": "0973135f-22e7-4b66-8431-7f6678043e7e",
-            "zIndex": 7,
             "data": {
               "type": "tm.Process",
               "name": "Python Server",
@@ -1258,6 +1258,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 8,
             "ports": {
               "groups": {
                 "top": {
@@ -1341,7 +1342,6 @@
               ]
             },
             "id": "4a5a6dcf-fb70-4444-ad38-9c236ed96988",
-            "zIndex": 8,
             "data": {
               "type": "tm.Store",
               "name": "Data Base",
